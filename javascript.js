@@ -43,17 +43,17 @@ function playRound(humanchoice, computerchoice){
         if (humanchoice === computerchoice){ 
             console.log("It's a tie!");
             tiescore++;
-            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore + " | Ties: " + tiescore;
+            scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
         // Human wins
         } else if ((humanchoice === "rock" && computerchoice === "scissors") || (humanchoice === "paper" && computerchoice === "rock") || (humanchoice === "scissors" && computerchoice === "paper")) {
             console.log("You win!");
             humanscore++;
-            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore + " | Ties: " + tiescore;
+            scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
         // Computer wins
         } else {
             console.log("You lose!");
             compscore++;
-            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore + " | Ties: " + tiescore;
+            scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
         }
         console.log("You have " + (i-1) + " turns left.");
     }else{
