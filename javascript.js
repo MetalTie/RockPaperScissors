@@ -2,7 +2,9 @@ let humanchoice = "";
 let i = 5;
 let compscore = 0;
 let humanscore = 0;
+let tiescore = 0;
 
+// Get score div from the DOM
 const scoreDiv = document.getElementById("score");
 
 // Get buttons from the DOM
@@ -40,16 +42,18 @@ function playRound(humanchoice, computerchoice){
         // tie
         if (humanchoice === computerchoice){ 
             console.log("It's a tie!");
+            tiescore++;
+            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore + " | Ties: " + tiescore;
         // Human wins
         } else if ((humanchoice === "rock" && computerchoice === "scissors") || (humanchoice === "paper" && computerchoice === "rock") || (humanchoice === "scissors" && computerchoice === "paper")) {
             console.log("You win!");
             humanscore++;
-            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore;
+            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore + " | Ties: " + tiescore;
         // Computer wins
         } else {
             console.log("You lose!");
             compscore++;
-            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore;
+            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore + " | Ties: " + tiescore;
         }
         console.log("You have " + (i-1) + " turns left.");
     }else{
