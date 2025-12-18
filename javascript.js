@@ -1,3 +1,4 @@
+let i=5; // This variable keeps track of the number of rounds played
 
 // This function generates the computer's choice
 function getComputerChoice(){ 
@@ -15,16 +16,21 @@ function getHumanChoice(){
 
 // Use this to see who wins
 function playRound(humanchoice, computerchoice){
+    // Check for a tie
     if (humanchoice == computerchoice) {
         return "It's a tie!";
     }
+    // Check all winning conditions for the human player
     else if ((humanchoice == 'rock' && computerchoice == 'scissors') || (humanchoice == 'paper' && computerchoice == 'rock') || (humanchoice == 'scissors' && computerchoice == 'paper')){
-        return "You win!" + humanchoice + " beats " + computerchoice;
+        return "You win! " + humanchoice + " beats " + computerchoice;
     }
-    else {
-        return "You lose!" + computerchoice + " beats " + humanchoice;
+    else { // If none of the above conditions are met, the computer wins
+        return "You lose! " + computerchoice + " beats " + humanchoice;
     }
 }
 
-
-console.log(playRound(getHumanChoice(), getComputerChoice())); // This plays a round and logs the result to the console
+while (i>0){ // This loop runs for 5 rounds
+    console.log(playRound(getHumanChoice(), getComputerChoice())); // This plays a round and logs the result to the console
+    console.log("You have " + (i-1) + " rounds left."); // This logs the number of rounds left to the console
+    i--; // This decrements the round counter
+}
