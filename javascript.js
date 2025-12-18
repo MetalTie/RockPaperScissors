@@ -1,5 +1,11 @@
 let humanchoice = "";
 let i = 5;
+let compscore = 0;
+let humanscore = 0;
+
+const scoreDiv = document.getElementById("score");
+
+// Get buttons from the DOM
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
@@ -29,18 +35,25 @@ function computerChoice() {
 }
 
 // Plays a round of the game
-function playRound(humanchoice, computerChoice){
+function playRound(humanchoice, computerchoice){
     if (i > 0){
-        if (humanchoice === computerChoice){
+        // tie
+        if (humanchoice === computerchoice){ 
             console.log("It's a tie!");
-        } else if ((humanchoice === "rock" && computerChoice === "scissors") || (humanchoice === "paper" && computerChoice === "rock") || (humanchoice === "scissors" && computerChoice === "paper")) {
+        // Human wins
+        } else if ((humanchoice === "rock" && computerchoice === "scissors") || (humanchoice === "paper" && computerchoice === "rock") || (humanchoice === "scissors" && computerchoice === "paper")) {
             console.log("You win!");
+            humanscore++;
+            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore;
+        // Computer wins
         } else {
             console.log("You lose!");
+            compscore++;
+            scoreDiv.innerHTML = "Human Score: " + humanscore + " | Computer Score: " + compscore;
         }
         console.log("You have " + (i-1) + " turns left.");
     }else{
-        console.log("Sorry, you are out of turns.")
+        alert("Sorry, you are out of turns.");
     }
     i--;
     
