@@ -1,36 +1,47 @@
-let i=5; // This variable keeps track of the number of rounds played
+let humanchoice = "";
+let i = 5;
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
 
-// This function generates the computer's choice
-function getComputerChoice(){ 
-    const comparray = ['rock', 'paper', 'scissors']; // This array holds the possible choices
-    const rng = Math.floor(Math.random() * 3); // This generates a random index between 0 and 2
-    const compchoice = comparray[rng]; // This selects the computer's choice based on the random index
-    return compchoice; // This returns the computer's choice
+ // Event listeners for each button
+rock.addEventListener("click", rockChoice);
+paper.addEventListener("click", paperChoice);
+scissors.addEventListener("click", scissorsChoice);
+
+// Sets each human choice and plays a round
+function rockChoice() {
+    playRound("rock", computerChoice());
+}
+function paperChoice() {
+    playRound("paper", computerChoice());
+}
+function scissorsChoice() {
+    playRound("scissors", computerChoice());
 }
 
-// This function gets the human player's choice
-function getHumanChoice(){
-    const humanchoice = prompt("Enter rock, paper, or scissors:"); // This prompts the user for their choice
-    return humanchoice.toLowerCase(); // This returns the user's choice in lowercase so it is easier to compare
+// Generates random computer choice
+function computerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    const rng = Math.floor(Math.random() * 3);
+    console.log(choices[rng]);
+    return choices[rng];
 }
 
-// Use this to see who wins
-function playRound(humanchoice, computerchoice){
-    // Check for a tie
-    if (humanchoice == computerchoice) {
-        return "It's a tie!";
+// Plays a round of the game
+function playRound(humanchoice, computerChoice){
+    if (i > 0){
+        if (humanchoice === computerChoice){
+            console.log("It's a tie!");
+        } else if ((humanchoice === "rock" && computerChoice === "scissors") || (humanchoice === "paper" && computerChoice === "rock") || (humanchoice === "scissors" && computerChoice === "paper")) {
+            console.log("You win!");
+        } else {
+            console.log("You lose!");
+        }
+        console.log("You have " + (i-1) + " turns left.");
+    }else{
+        console.log("Sorry, you are out of turns.")
     }
-    // Check all winning conditions for the human player
-    else if ((humanchoice == 'rock' && computerchoice == 'scissors') || (humanchoice == 'paper' && computerchoice == 'rock') || (humanchoice == 'scissors' && computerchoice == 'paper')){
-        return "You win! " + humanchoice + " beats " + computerchoice;
-    }
-    else { // If none of the above conditions are met, the computer wins
-        return "You lose! " + computerchoice + " beats " + humanchoice;
-    }
-}
-
-while (i>0){ // This loop runs for 5 rounds
-    console.log(playRound(getHumanChoice(), getComputerChoice())); // This plays a round and logs the result to the console
-    console.log("You have " + (i-1) + " rounds left."); // This logs the number of rounds left to the console
-    i--; // This decrements the round counter
+    i--;
+    
 }
