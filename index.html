@@ -8,16 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>Rock Paper Scissors</h1>
+        <h1 class="title">Rock Paper Scissors</h1>
     </header>
 
-    <section class="scoreboard">
-        <h3>Score</h3>
-        <p id="score"></p>
-    </section>
+    
     <section class="playarea">
         <div class="humanchoice">
-            <p>Pick a choice:</p>
+            <h3 class="subheader">Pick a choice:</h3>
             <div>
                 <button id="rock">rock</button>
                 <button id="paper">paper</button>
@@ -25,10 +22,15 @@
             </div>
         </div>
         <div class="playground">
-            <h2>Human</h2>
-            <h2>VS</h2>
-            <h2>Computer</h2>
+            <h2 class="item" id="human-choice">???</h2>
+            <h2 class="item">VS</h2>
+            <h2 class="item" id="computer-choice">???</h2>
         </div>
+        <p id="result">???</p>
+    </section>
+    <section class="scoreboard">
+        <h3 class="subheader">Score</h3>
+        <p id="score"></p>
     </section>
 </body>
 <script src="javascript.js"></script>

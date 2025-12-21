@@ -12,6 +12,10 @@ const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 
+
+const displayhuman = document.getElementById("human-choice");
+const displaycomputer = document.getElementById("computer-choice");
+const displayresult = document.getElementById("result");
  // Event listeners for each button
 rock.addEventListener("click", rockChoice);
 paper.addEventListener("click", paperChoice);
@@ -44,16 +48,25 @@ function playRound(humanchoice, computerchoice){
             console.log("It's a tie!");
             tiescore++;
             scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
+            displayresult.innerHTML = 'It\'s a tie!';
+            displayhuman.innerHTML = humanchoice;
+            displaycomputer.innerHTML = computerchoice;
         // Human wins
         } else if ((humanchoice === "rock" && computerchoice === "scissors") || (humanchoice === "paper" && computerchoice === "rock") || (humanchoice === "scissors" && computerchoice === "paper")) {
             console.log("You win!");
             humanscore++;
             scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
+            displayresult.innerHTML = 'You win! ' + humanchoice.charAt(0).toUpperCase() + humanchoice.slice(1) + ' beats ' + computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1);
+            displayhuman.innerHTML = humanchoice;
+            displaycomputer.innerHTML = computerchoice;
         // Computer wins
         } else {
             console.log("You lose!");
             compscore++;
             scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
+            displayresult.innerHTML = 'You lose! ' + computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1) + ' beats ' + humanchoice.charAt(0).toUpperCase() + humanchoice.slice(1);
+            displayhuman.innerHTML = humanchoice;
+            displaycomputer.innerHTML = computerchoice;
         }
         console.log("You have " + (i-1) + " turns left.");
     }else{
