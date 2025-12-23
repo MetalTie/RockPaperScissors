@@ -41,7 +41,6 @@ function scissorsChoice() {
 function computerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const rng = Math.floor(Math.random() * 3);
-    console.log(choices[rng]);
     return choices[rng];
 }
 
@@ -50,7 +49,6 @@ function playRound(humanchoice, computerchoice){
     if (i > 0){
         // tie
         if (humanchoice === computerchoice){ 
-            console.log("It's a tie!");
             tiescore++;
             turn.innerHTML = 'Turns left: ' + (i-1);
             scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
@@ -59,7 +57,6 @@ function playRound(humanchoice, computerchoice){
             displaycomputer.innerHTML = computerchoice;
         // Human wins
         } else if ((humanchoice === "rock" && computerchoice === "scissors") || (humanchoice === "paper" && computerchoice === "rock") || (humanchoice === "scissors" && computerchoice === "paper")) {
-            console.log("You win!");
             humanscore++;
             turn.innerHTML = 'Turns left: ' + (i-1);
             scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
@@ -68,7 +65,6 @@ function playRound(humanchoice, computerchoice){
             displaycomputer.innerHTML = computerchoice;
         // Computer wins
         } else {
-            console.log("You lose!");
             compscore++;
             turn.innerHTML = 'Turns left: ' + (i-1);
             scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
