@@ -72,7 +72,6 @@ function playRound(humanchoice, computerchoice){
             displayhuman.innerHTML = humanchoice;
             displaycomputer.innerHTML = computerchoice;
         }
-        console.log("You have " + (i-1) + " turns left.");
     }else{
         alert("Sorry, you are out of turns.");
         if (humanscore > compscore){
