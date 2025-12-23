@@ -1,82 +1,82 @@
-let humanchoice = "";
+let playerchoice = "";
 let i = 5;
 let compscore = 0;
-let humanscore = 0;
+let playerscore = 0;
 let tiescore = 0;
 
-// Get score ID from the DOM
+// Get score ID from the DOM to keep track of the score
 const scoreDiv = document.getElementById("score");
 
-// Get turn ID from the DOM
-const turn = document.getElementById("iteration");
+// Get iteration ID from the DOM to keep track of number of turns left
+const numberOfTurns = document.getElementById("iteration");
 
-// Get buttons from the DOM
+// Get buttons from the DOM to get the player choice
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 
 // Get elements from the DOM to display choices and results
-const displayhuman = document.getElementById("human-choice");
+const displayplayer = document.getElementById("player-choice");
 const displaycomputer = document.getElementById("computer-choice");
 const displayresult = document.getElementById("result");
 
 
  // Event listeners for each button
-rock.addEventListener("click", rockChoice);
-paper.addEventListener("click", paperChoice);
-scissors.addEventListener("click", scissorsChoice);
+rock.addEventListener("click", onRockChoice);
+paper.addEventListener("click", onPaperChoice);
+scissors.addEventListener("click", onScissorsChoice);
 
-// Sets each human choice and plays a round
-function rockChoice() {
-    playRound("rock", computerChoice());
+// Sets each player choice and plays a round
+function onRockChoice() {
+    getResult("rock", fetchComputerChoice());
 }
-function paperChoice() {
-    playRound("paper", computerChoice());
+function onPaperChoice() {
+    getResult("paper", fetchComputerChoice());
 }
-function scissorsChoice() {
-    playRound("scissors", computerChoice());
+function onScissorsChoice() {
+    getResult("scissors", fetchComputerChoice());
 }
 
 // Generates random computer choice
-function computerChoice() {
+function fetchComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const rng = Math.floor(Math.random() * 3);
     return choices[rng];
 }
 
 // Plays a round of the game
-function playRound(humanchoice, computerchoice){
+function getResult(playerchoice, computerchoice){
     if (i > 0){
         // tie
-        if (humanchoice === computerchoice){ 
+        if (playerchoice === computerchoice){ 
             tiescore++;
-            turn.innerHTML = 'Turns left: ' + (i-1);
-            scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
+            numberOfTurns.innerHTML = 'Turns left: ' + (i-1);
+            scoreDiv.innerHTML = 'Human Score: ' + playerscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
             displayresult.innerHTML = 'It\'s a tie!';
-            displayhuman.innerHTML = humanchoice;
+            displayplayer.innerHTML = playerchoice;
             displaycomputer.innerHTML = computerchoice;
         // Human wins
-        } else if ((humanchoice === "rock" && computerchoice === "scissors") || (humanchoice === "paper" && computerchoice === "rock") || (humanchoice === "scissors" && computerchoice === "paper")) {
-            humanscore++;
-            turn.innerHTML = 'Turns left: ' + (i-1);
-            scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
-            displayresult.innerHTML = 'You win! ' + humanchoice.charAt(0).toUpperCase() + humanchoice.slice(1) + ' beats ' + computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1);
-            displayhuman.innerHTML = humanchoice;
+        } else if ((playerchoice === "rock" && computerchoice === "scissors") || (playerchoice === "paper" && computerchoice === "rock") || (playerchoice === "scissors" && computerchoice === "paper")) {
+            playerscore++;
+            numberOfTurns.innerHTML = 'Turns left: ' + (i-1);
+            scoreDiv.innerHTML = 'Human Score: ' + playerscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
+            displayresult.innerHTML = 'You win! ' + playerchoice.charAt(0).toUpperCase() + playerchoice.slice(1) + ' beats ' + computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1);
+            displayplayer.innerHTML = playerchoice;
             displaycomputer.innerHTML = computerchoice;
         // Computer wins
         } else {
             compscore++;
-            turn.innerHTML = 'Turns left: ' + (i-1);
-            scoreDiv.innerHTML = 'Human Score: ' + humanscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
-            displayresult.innerHTML = 'You lose! ' + computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1) + ' beats ' + humanchoice.charAt(0).toUpperCase() + humanchoice.slice(1);
-            displayhuman.innerHTML = humanchoice;
+            numberOfTurns.innerHTML = 'Turns left: ' + (i-1);
+            scoreDiv.innerHTML = 'Human Score: ' + playerscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
+            displayresult.innerHTML = 'You lose! ' + computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1) + ' beats ' + playerchoice.charAt(0).toUpperCase() + playerchoice.slice(1);
+            displayplayer.innerHTML = playerchoice;
             displaycomputer.innerHTML = computerchoice;
         }
     }else{
         alert("Sorry, you are out of turns.");
-        if (humanscore > compscore){
+        if (playerscore > compscore){
             alert("You won the game!");
-        }else if (humanscore < compscore){
+        }else if (playerscore < compscore){
             alert("You lost the game.");
         }else{
             alert("You tied.");
