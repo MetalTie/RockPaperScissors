@@ -4,18 +4,14 @@ let compscore = 0;
 let playerscore = 0;
 let tiescore = 0;
 
-// Get score ID from the DOM to keep track of the score
 const scoreDiv = document.getElementById("score");
 
-// Get iteration ID from the DOM to keep track of number of turns left
 const numberOfTurns = document.getElementById("iteration");
 
-// Get buttons from the DOM to get the player choice
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 
-// Get elements from the DOM to display choices and results
 const displayplayer = document.getElementById("player-choice");
 const displaycomputer = document.getElementById("computer-choice");
 const displayresult = document.getElementById("result");
@@ -56,7 +52,10 @@ function getResult(playerchoice, computerchoice){
             displayplayer.innerHTML = playerchoice;
             displaycomputer.innerHTML = computerchoice;
         // Human wins
-        } else if ((playerchoice === "rock" && computerchoice === "scissors") || (playerchoice === "paper" && computerchoice === "rock") || (playerchoice === "scissors" && computerchoice === "paper")) {
+        } else if (
+        (playerchoice === "rock" && computerchoice === "scissors") || 
+        (playerchoice === "paper" && computerchoice === "rock") || 
+        (playerchoice === "scissors" && computerchoice === "paper")) {
             playerscore++;
             numberOfTurns.innerHTML = 'Turns left: ' + (i-1);
             scoreDiv.innerHTML = 'Human Score: ' + playerscore + ' | Ties: ' + tiescore + ' | Computer Score: ' + compscore;
