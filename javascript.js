@@ -86,6 +86,6 @@ function playRound(humanchoice, computerchoice){
         }else{
             alert("You tied.");
         }
-        i--;
     }
+    i--;
 }
