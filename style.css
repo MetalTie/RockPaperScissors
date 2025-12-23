@@ -57,12 +57,7 @@ header {
     .playground{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        border-color: pink;
-        border: 1px solid yellow;
         justify-items: center;
-        .item{
-            border: 1px solid pink;
-        }
     }    
 
 }
@@ -75,8 +70,11 @@ header {
     margin:20px 0;
     position:absolute;
     bottom: 0;
-    
-    p{
+    #iteration{
+        text-align: center;
+        font-size: 15px;
+    }
+    #score{
         font-size: 20px;
     }
 }
